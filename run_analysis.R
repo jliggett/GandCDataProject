@@ -1,8 +1,8 @@
 library(data.table)
 library(dplyr)
 
-featureNames <- read.table("./data/UCI HAR Dataset/features.txt")
-activityLabels <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
+featNames <- read.table("./data/UCI HAR Dataset/features.txt")
+activityLab <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
 
 subjectTrain <- read.table("./data/UCI HAR Dataset/train/subject_train.txt", header = FALSE)
 activityTrain <- read.table("./data/UCI HAR Dataset/train/y_train.txt", header = FALSE)
@@ -16,7 +16,7 @@ subject <- rbind(subjectTrain, subjectTest)
 activity <- rbind(activityTrain, activityTest)
 features <- rbind(featuresTrain, featuresTest)
 
-colnames(features) <- t(featureNames[2])
+colnames(features) <- t(featNames[2])
 
 colnames(activity) <- "Activity"
 colnames(subject) <- "Subject"
@@ -32,7 +32,7 @@ extracted <- data[,columns]
 extracted$Activity <- as.character(extracted$Activity)
 
 for(i in 1:6) {
-        extracted$Activity[extracted$Activity == i] <- as.character(activityLabels[i,2])
+        extracted$Activity[extracted$Activity == i] <- as.character(activityLab[i,2])
 }
 
 extracted$Activity <- as.factor(extracted$Activity)
