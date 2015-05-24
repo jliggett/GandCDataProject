@@ -1,5 +1,5 @@
 
-## run_analysis.R performs the steps listed below on the data found at:
+## run_analysis.R performs the steps listed below on data found at:
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
 1. Merges the training and the test sets to create one data set
